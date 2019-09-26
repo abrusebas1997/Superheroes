@@ -52,37 +52,60 @@ class Hero:
             return True
         else:
             return False
-    # def fight(self, opponent):
-    #     while self.is_alive() == True and opponent.is_alive() == True:
-    #         if len(self.abilitities) > 0 or len(opponent.abilitities) > 0:
-    #             opponent.take_damage(self.attack())
-    #             self.take_damage(opponent.attack())
-    #             if self.is_alive() == False:
-    #                 print(opponent.name + ' won')
-    #             else:
-    #                 print(self.name + ' won')
-    #         else:
-    #             print("Draw!")
-    #             return False
+    def fight(self, opponent):
+        while self.is_alive() == True and opponent.is_alive() == True:
+            if len(self.abilities) > 0 or len(opponent.abilities) > 0:
+                opponent.take_damage(self.attack())
+                self.take_damage(opponent.attack())
+                if opponent.is_alive() == False:
+                    print(self.name + ' won')
+                else:
+                    print(opponent.name + ' won')
+            else:
+                print("Draw!")
+                return False
+class Weapon(Ability):
+    def attack(self):
+        weapon_attack = randint(self.attack_strength//2, self.attack_strength)
+        return weapon_attack
+class Team(name):
+    def __init__(self, name):
+        self.name = name
+        self.heroes = []
+
+    def remove_hero(self, name):
+        self.heroes.pop()
+
+    def view_all_heroes(self):
+        index = 0
+        for hero in self.heroes:
+            print("{}{}".format(self.name, self.heroes))
+            index += 1
+    def add_hero(self, hero):
+        self.heroes.append()
+
+
+
+
 
 if __name__ == "__main__":
     # ability = Ability("Debbuging Ability", 20)
     # print(ability.name)
     # print(ability.attack())
-    #
+
     # armor = Armor("blockpower", 100)
     # print(armor.name)
     # print(armor.block())
-    #
+
     # my_hero = Hero("Grace Hopper", 200)
     # print(my_hero.name)
     # print(my_hero.current_health)
-    #
+
     # ability = Ability("Great Debugging", 50)
     # hero = Hero("Grace Hopper", 200)
     # hero.add_ability(ability)
     # print(hero.abilities)
-    #
+
     # ability = Ability("Great Debugging", 50)
     # another_ability = Ability("Smarty Pants", 90)
     # hero = Hero("Grace Hopper", 200)
@@ -96,20 +119,20 @@ if __name__ == "__main__":
     # hero.take_damage(50)
     # print(hero.current_health)
 
-    hero = Hero("Grace Hopper", 200)
-    hero.take_damage(150)
-    print(hero.is_alive())
-    hero.take_damage(15000)
-    print(hero.is_alive())
+    # hero = Hero("Grace Hopper", 200)
+    # hero.take_damage(150)
+    # print(hero.is_alive())
+    # hero.take_damage(15000)
+    # print(hero.is_alive())
 
-    # hero1 = Hero("Wonder Woman")
-    # hero2 = Hero("Dumbledore")
-    # ability1 = Ability("Super Speed", 300)
-    # ability2 = Ability("Super Eyes", 130)
-    # ability3 = Ability("Wizard Wand", 80)
-    # ability4 = Ability("Wizard Beard", 20)
-    # hero1.add_ability(ability1)
-    # hero1.add_ability(ability2)
-    # hero2.add_ability(ability3)
-    # hero2.add_ability(ability4)
-    # hero1.fight(hero2)
+    hero1 = Hero("Wonder Woman")
+    hero2 = Hero("Dumbledore")
+    ability1 = Ability("Super Speed", 300)
+    ability2 = Ability("Super Eyes", 130)
+    ability3 = Ability("Wizard Wand", 80)
+    ability4 = Ability("Wizard Beard", 20)
+    hero1.add_ability(ability1)
+    hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    hero2.add_ability(ability4)
+    hero1.fight(hero2)
