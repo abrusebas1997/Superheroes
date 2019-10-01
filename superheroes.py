@@ -110,14 +110,14 @@ class Team:
         self.heroes.append(hero)
 
     def attack(self, other_team):
-        while self.heroes_alive() and other_team.heroes_alive() is True:
+        while len(self.heroes_alive()) > 0 and len(other_team.heroes_alive()) > 0:
             first_team = random.choice(self.heroes_alive())
             second_team = random.choice(other_team.heroes_alive())
             first_team.fight(second_team)
-    def heroes_alive(self):
+    def heroes_alive(self): #To include opponent and self in heroes list
         heroes_alive = []
         for hero in self.heroes:
-            if hero.is_alive is True:
+            if hero.is_alive(): # They have to be alive to attack
                 heroes_alive.append(hero)
             return heroes_alive
     def revive_heroes(self, health=100):
